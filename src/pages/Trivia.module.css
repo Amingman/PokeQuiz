@@ -68,12 +68,11 @@
 }
 
 .exit {
-  background-color: rgb(255, 74, 74);
+  background-color: #ff4a4a;
   border: 2px solid white;
   border-radius: 5px;
   color: white;
   padding: 5px 10px;
-  width: 90%;
 }
 
 .text {
@@ -85,4 +84,71 @@
   font-size: 36px;
   font-weight: 900;
   color: #ffffff;
+}
+
+.startPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: dodgerblue;
+  position: relative;
+}
+
+.startRulesWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.startRulesWrapper p:nth-child(3) {
+  padding-top: 0;
+}
+
+.startRulesWrapper p:nth-child(2) {
+  padding-bottom: 5px;
+}
+
+.startGameTitle {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.startBTN {
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #ff4a4a;
+  color: #ffffff;
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  border: 2px solid whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 6px;
+  transition: all 200ms ease-in-out;
+}
+
+.startBTN:hover {
+  background-color: #f87c7c;
+  transform: translateY(-2px);
+}
+
+.startBTN:active {
+  background-color: #a53d4f;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 2px 3px;
+  transform: translateY(0);
 }

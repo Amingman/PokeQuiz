@@ -17,8 +17,8 @@ export default function Trivia() {
   const [options, setOptions] = useState([])
   const [isRevealed, setIsRevealed] = useState(false)
   const [feedback, setFeedback] = useState("")
+  const [showRules, setShowRules] = useState(false)
 
-  // from here
   useEffect(() => {
     initialSetup()
   }, [])
@@ -28,6 +28,10 @@ export default function Trivia() {
     genOneData.push("Trick question!")
     setGenOne(genOneData)
     handleNewQ(genOneData)
+  }
+
+  const handleGameNameClick = () => {
+    setShowRules(true)
   }
 
   const handleNewQ = async pokeData => {
@@ -106,32 +110,53 @@ export default function Trivia() {
 
   return (
     <main className={css.triviaWrapper}>
-      <h1 className="game-title">Trivia</h1>
-      <Link to="/" className={css.exit}>
-        Exit
-      </Link>
-      <section>
-        <div className={css.text}>
-          <TriviaQuestion question={question} />
-          {isRevealed && (
-            <div className={css.answer}>
-              <div className={css.feedback}>{feedback}</div>
-              <TriviaAnswer question={question} />
-            </div>
-          )}
-        </div>
-        <div className={css.buttons}>
-          {options.map(option => (
-            <button
-              className={css.button}
-              key={option}
-              onClick={() => checkAnswer(option)}
-            >
-              {option}
+      {!showRules ? (
+        <section className={css.startPage}>
+          <h1 className={css.startGameTitle} onClick={handleGameNameClick}>
+            Trivia
+          </h1>
+          <Link to="/" className={css.exit}>
+            Exit
+          </Link>
+          <section className={css.startRulesWrapper}>
+            <h2>Rules:</h2>
+            <p>Answer the trivia questions correctly!</p>
+            <p>Have Fun!</p>
+            <button className={css.startBTN} onClick={() => setShowRules(true)}>
+              Start
             </button>
-          ))}
-        </div>
-      </section>
+          </section>
+        </section>
+      ) : (
+        <section>
+          <h1 className={css.gameTitle}>Trivia</h1>
+          <Link to="/" className={css.exit}>
+            Exit
+          </Link>
+          <section>
+            <div className={css.text}>
+              <TriviaQuestion question={question} />
+              {isRevealed && (
+                <div className={css.answer}>
+                  <div className={css.feedback}>{feedback}</div>
+                  <TriviaAnswer question={question} />
+                </div>
+              )}
+            </div>
+            <div className={css.buttons}>
+              {options.map(option => (
+                <button
+                  className={css.button}
+                  key={option}
+                  onClick={() => checkAnswer(option)}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </section>
+        </section>
+      )}
     </main>
   )
 }
